@@ -19,4 +19,8 @@ class Token {
     get htmlToken(){
         return document.getElementById(this.id);
     }
+
+    get offsetLeft(){
+
+    }
 }

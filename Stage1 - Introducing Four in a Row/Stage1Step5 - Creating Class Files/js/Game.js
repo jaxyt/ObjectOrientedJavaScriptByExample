@@ -30,4 +30,16 @@ class Game {
     get activePlayer(){
         return this.players.find(player => player.active);
     }
+
+    handleKeyDown(e){
+        if(this.ready){
+            if (e.key === 'ArrowDown') {
+                
+            } else if (e.key === 'ArrowLeft') {
+                
+            } else if (e.key === 'ArrowRight') {
+                
+            }
+        }
+    }
 }
