@@ -3,8 +3,8 @@ const game = new Game();
 /**
 * Listens for click on `#begin-game` and calls startGame() on game object
 */
-document.querySelector('#begin-game').addEventListener('click', (e)=>{
+document.getElementById('begin-game').addEventListener('click', (e)=>{
     game.startGame();
-    this.style.display = 'none';
+    e.target.style.display = 'none';
     document.getElementById('play-area').style.opacity = '1';
 })
