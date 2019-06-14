@@ -3,6 +3,7 @@ class Token {
         this.owner = owner;
         this.id = `token-${index}-${owner.id}`;
         this.dropped = false;
+        this.columnLocation = 0;
     }
 
     /**
@@ -21,6 +22,22 @@ class Token {
     }
 
     get offsetLeft(){
+       return this.htmlToken.offsetLeft
+    }
 
+    moveLeft(){
+        if (this.htmlToken.offsetLeft > 0) {
+            this.htmlToken.style.left = this.htmlToken.offsetLeft - 76;
+            this.columnLocation -= 1; 
+        }
+        
+    }
+    
+    moveRight(){
+        if (this.columnLocation < 6) {
+            this.htmlToken.style.left = this.htmlToken.offsetLeft + 76;
+            this.columnLocation += 1;
+        }
+        
     }
 }
