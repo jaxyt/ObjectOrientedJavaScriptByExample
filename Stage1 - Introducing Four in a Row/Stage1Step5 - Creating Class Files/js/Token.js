@@ -26,15 +26,15 @@ class Token {
     }
 
     moveLeft(){
-        if (this.htmlToken.offsetLeft > 0) {
+        if (this.columnLocation > 0) {
             this.htmlToken.style.left = this.htmlToken.offsetLeft - 76;
             this.columnLocation -= 1; 
         }
         
     }
     
-    moveRight(){
-        if (this.columnLocation < 6) {
+    moveRight(columns){
+        if (this.columnLocation < columns - 1) {
             this.htmlToken.style.left = this.htmlToken.offsetLeft + 76;
             this.columnLocation += 1;
         }

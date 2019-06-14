@@ -38,7 +38,7 @@ class Game {
             } else if (e.key === 'ArrowLeft') {
                 this.activePlayer.activeToken.moveLeft();
             } else if (e.key === 'ArrowRight') {
-                this.activePlayer.activeToken.moveRight();
+                this.activePlayer.activeToken.moveRight(this.board.columns);
             }
         }
     }
