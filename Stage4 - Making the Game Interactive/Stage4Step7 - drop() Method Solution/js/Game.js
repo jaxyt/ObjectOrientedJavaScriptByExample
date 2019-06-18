@@ -34,7 +34,24 @@ class Game {
         this.activePlayer.activeToken.drawHTMLToken();
         this.ready = true;
     }
-	
+    
+    playToken(){
+        let spaces = this.board.spaces;
+        let activeToken = this.activePlayer.activeToken;
+        let targetColumn = spaces[activeToken.columnLocation];
+        let targetSpace = null;
+
+        for (let space of targetColumn) {
+            if (space.token === null) {
+                targetSpace = space;
+            }
+        }
+
+        if (targetSpace !== null) {
+            game.ready = false;
+            activeToken.drop(targetSpace);
+        }
+    }
 	
     /**
 	 * Branches code, depending on what key player presses
@@ -50,5 +67,5 @@ class Game {
                 // play token
             }
         }
-	}
+    }
 }
