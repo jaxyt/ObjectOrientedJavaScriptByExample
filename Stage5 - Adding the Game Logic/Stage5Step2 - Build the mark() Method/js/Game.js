@@ -69,9 +69,15 @@ class Game {
         }
 
         if (targetSpace !== null) {
+            const game = this;
             game.ready = false;
-    		activeToken.drop(targetSpace);   
-        }              
+
+    		activeToken.drop(targetSpace, function () {
+                game.updateGameState(activeToken, targetSpace);
+            });   
+        }
+        
+        
     }
 
     /** 
@@ -133,5 +139,36 @@ class Game {
         }
 
         return win;
+    }
+
+    switchPlayers(){
+        for (let i = 0; i < this.players.length; i++) {
+            if (this.players[i].active === false) {
+                this.players[i].active = true;
+            } else if (this.players[i].active === true) {
+                this.players[i].active = false;
+            }
+            
+        }
+    }
+
+    gameOver(message){
+        const gameMessage = document.getElementById('game-over');
+        gameMessage.style.display = 'block';
+        gameMessage.textContent = message;
+    }
+
+    updateGameState(token, target){
+        target.mark(token);
+        if (this.checkForWin(target)) {
+            this.gameOver(`${target.owner.name} won!`);
+        } else {
+            this.switchPlayers();
+            if (this.activePlayer.checkTokens()) {
+                this.activePlayer.activeToken.drawHTMLToken();
+            } else {
+                this.gameOver(`No more tokens`);
+            }
+        }
     }
 }
