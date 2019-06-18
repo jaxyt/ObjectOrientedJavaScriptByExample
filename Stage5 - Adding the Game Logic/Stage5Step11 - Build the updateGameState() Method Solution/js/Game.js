@@ -178,4 +178,20 @@ class Game {
 		document.getElementById('game-over').style.display = 'block';
         document.getElementById('game-over').textContent = message;
     }
+
+
+    updateGameState(token, target){
+        target.mark(token);
+
+        if (!this.checkForWin(target)) {
+            this.switchPlayers();
+            if (this.activePlayer.checkTokens()) {
+                this.activePlayer.activeToken.drawHTMLToken();
+            } else {
+                this.gameOver(`No more tokens`)
+            }
+        } else {
+            this.gameOver(`${target.token.owner} wins!`)
+        }
+    }
 }
