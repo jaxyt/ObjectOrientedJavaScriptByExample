@@ -13,3 +13,4 @@ document.getElementById('begin-game').addEventListener('click', (e)=>{
 document.addEventListener('keydown', (e)=>{
     game.handleKeyDown(e);
 })
+
